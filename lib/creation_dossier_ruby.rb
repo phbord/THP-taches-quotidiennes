@@ -99,7 +99,7 @@ def create_file_gitignore(name)
     puts ".gitignore created!"
 end
 
-# ADD gems
+# AJOUTS de gems
 def add_other_gem(name)
     puts "Do want add a gem ?\nEnter 'y' (yes) or 'n' (no).\n"
     print "> "
