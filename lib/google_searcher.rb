@@ -35,4 +35,4 @@ perform
 
 # Création d'un ALIAS (en ligne de commandes)
 # `$ nano ~/.bash_profile`
-# ajouter : alias glaunch=="ruby /Users/pierre-henribord/Sites/the-hacking-project/THP-taches-quotidiennes/lib/google_searcher.rb"
+# ajouter : alias glaunch="ruby /Users/pierre-henribord/Sites/the-hacking-project/THP-taches-quotidiennes/lib/google_searcher.rb"

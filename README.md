@@ -1,9 +1,13 @@
 # README
 
+## RACCOURCIS
+- glaunch
+- mkdiruby
+
 ## 1. Recoder "mkdir" (en Ruby)
-- saisie d'un mot au lancement            => un dossier va être créer (là où il se trouve)
-- saisie de plusieurs mots                => uniquement le 1er dossier demandé sera créer
-- pas de saisie de suite de caractères    => message d'erreurs
+- saisie d'un mot au lancement         => un dossier va être créer (là où il se trouve)
+- saisie de plusieurs mots             => uniquement le 1er dossier demandé sera créer
+- pas de saisie de suite de caractères => message d'erreurs
 
 
 ## 2. GoogleSearcher
