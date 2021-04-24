@@ -1,6 +1,6 @@
 # README
 
-## 1. Recoder "mkdir" en Ruby
+## 1. Recoder "mkdir" (en Ruby)
 - saisie d'un mot au lancement            => un dossier va être créer (là où il se trouve)
 - saisie de plusieurs mots                => uniquement le 1er dossier demandé sera créer
 - pas de saisie de suite de caractères    => message d'erreurs
@@ -17,7 +17,7 @@ Ouverture d'un onglet Google Chrome et lance une recherche automatique (par la s
 ### Etapes
 - la recherche "How to center a div" sera : https://www.google.com/search?q=how+to+center+a+div
 - utiliser la gem Launchy
-- créer un alias
+- créer un alias permanent
   - alias search="ruby /home/ton/chemin/vers/google_searcher.rb"
   - saisir : $ search how to center a div
 
@@ -34,4 +34,4 @@ Ouverture d'un onglet Google Chrome et lance une recherche automatique (par la s
   - création du dossier __lib__
   - `rspec --init`
   - création d'un __README.md__ (qui va dire que c'est un programme Ruby)
-  - création d'un __alias__ `mkdiruby`
+  - création d'un __alias__ `mkdiruby` permanent

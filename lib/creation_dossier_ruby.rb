@@ -34,7 +34,6 @@ end
 
 # CREATION de dossiers
 def create_folders(name)
-    puts ">>>>>>>>>>>>>> name: #{name}"
     Dir.mkdir("#{name}")
     Dir.mkdir("#{name}/lib")
     puts "folders '#{name}' and 'lib' created!"
@@ -42,9 +41,10 @@ end
 
 # CREATION de fichiers
 def create_file_app(name)
+    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\n\nDotenv.load('../.env')\n\n"
     File.new "#{name}/lib/app.rb","w"
     file = File.open("#{name}/lib/app.rb", "w+")
-    file.puts("data")
+    file.puts(content)
     file.close
     puts "file 'app.rb' created!"
 end
@@ -58,7 +58,8 @@ def create_file_app_spec(name)
 end
 
 def create_file_rubocop(name)
-    content = File.read("rubocop.txt")
+    path = File.dirname(__FILE__)
+    content = File.read("#{path}/rubocop.txt")
     File.new "#{name}/.rubocop","w"
     file = File.open("#{name}/.rubocop", "w+")
     file.puts(content)
@@ -67,8 +68,10 @@ def create_file_rubocop(name)
 end
 
 def create_file_gemfile(name)
+    ruby_v = RUBY_VERSION
+    content = "source \"https://rubygems.org\"\nruby '#{RUBY_VERSION}'\n"
+    content += "gem 'dotenv'\ngem 'pry'\ngem 'rspec'\ngem 'rubocop'\n\n"
     File.new "#{name}/Gemfile","w"
-    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\n\n"
     file = File.open("#{name}/Gemfile", "w+")
     file.puts(content)
     file.close
