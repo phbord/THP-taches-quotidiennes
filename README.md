@@ -23,14 +23,15 @@ Ouverture d'un onglet Google Chrome et lance une recherche automatique (par la s
 
 
 ## 3. Création d'un dossier ruby
-créer une commande mkdiruby
-- Création d'un dossier qui porte le nom de l'ARGV de l'utilisateur
-  - Si l'utilisateur ne rentre pas de ARGV ou ne rentre un ARGV avec plusieurs mots => dire à l'utilisateur comment s'en servir et s'arrêter
-  - dossiers lib
-  - Création du Gemfile avec les gems de THP
-  - Git init
-  - Création du fichier .env, puis on le met dans le fichier .gitignore
-  - Création du dossier lib
-  - rspec --init
-  - Création d'un Readme.md (qui va dire que c'est un programme Ruby)
-  - Création d'un alias de "mkdiruby"
+- création d'une commande `mkdiruby`
+- création d'un dossier récupérant le nom de l'ARGV
+  - si aucun ARGV ou un ARGV de plusieurs mots
+    - => dire à l'utilisateur comment s'en servir et s'arrêter
+  - dossiers __lib__
+  - création du fichier __Gemfile__ (gems de THP)
+  - `git init`
+  - création du fichier __.env__, puis on le met dans le fichier __.gitignore__
+  - création du dossier __lib__
+  - `rspec --init`
+  - création d'un __README.md__ (qui va dire que c'est un programme Ruby)
+  - création d'un __alias__ `mkdiruby`
