@@ -100,7 +100,7 @@ def create_file_gitignore(name)
 end
 
 # ADD gems
-def add_gem(name)
+def add_other_gem(name)
     puts "Do want add a gem ?\nEnter 'y' (yes) or 'n' (no).\n"
     print "> "
     answer = STDIN.gets.chomp.to_s.downcase
@@ -118,7 +118,7 @@ def add_gem(name)
     file.close
     puts "Gem '#{gem}' added!"
 
-    add_gem(name)
+    add_other_gem(name)
 end
 
 # GENERATION de lignes de commandes
@@ -145,7 +145,7 @@ def perform
     create_file_app(name)
     create_file_rubocop(name)
     create_file_gemfile(name)
-    add_gem(name)
+    add_other_gem(name)
     create_file_readme(name)
     create_file_env(name)
     create_file_gitignore(name)
