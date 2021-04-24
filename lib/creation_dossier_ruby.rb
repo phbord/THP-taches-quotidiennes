@@ -70,7 +70,7 @@ end
 def create_file_gemfile(name)
     ruby_v = RUBY_VERSION
     content = "source \"https://rubygems.org\"\nruby '#{RUBY_VERSION}'\n"
-    content += "gem 'dotenv'\ngem 'pry'\ngem 'rspec'\ngem 'rubocop'\n\n"
+    content += "gem 'dotenv'\ngem 'pry'\ngem 'rspec'\ngem 'rubocop'\n"
     File.new "#{name}/Gemfile","w"
     file = File.open("#{name}/Gemfile", "w+")
     file.puts(content)
@@ -99,6 +99,28 @@ def create_file_gitignore(name)
     puts ".gitignore created!"
 end
 
+# ADD gems
+def add_gem(name)
+    puts "Do want add a gem ?\nEnter 'y' (yes) or 'n' (no).\n"
+    print "> "
+    answer = STDIN.gets.chomp.to_s.downcase
+    puts "\n" if answer != "y"
+    return false if answer != "y"
+
+    puts "Enter a new gem\n"
+    print "> "
+    gem = STDIN.gets.chomp.to_s.downcase
+    return false unless gem
+
+    content = "gem '#{gem}'\n\n"
+    file = File.open("#{name}/Gemfile", "a+")
+    file.puts(content)
+    file.close
+    puts "Gem '#{gem}' added!"
+
+    add_gem(name)
+end
+
 # GENERATION de lignes de commandes
 def generate_git_init(name)
     system("cd #{name} && git init")
@@ -123,6 +145,7 @@ def perform
     create_file_app(name)
     create_file_rubocop(name)
     create_file_gemfile(name)
+    add_gem(name)
     create_file_readme(name)
     create_file_env(name)
     create_file_gitignore(name)
