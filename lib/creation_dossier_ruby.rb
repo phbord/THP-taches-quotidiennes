@@ -41,7 +41,7 @@ end
 
 # CREATION de fichiers
 def create_file_app(name)
-    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\n\nDotenv.load('../.env')\n\n#binding.pry\n\n"
+    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\n\nDotenv.load('.env')\n\n#binding.pry\n\n"
     File.new "#{name}/app.rb","w"
     file = File.open("#{name}/app.rb", "w+")
     file.puts(content)
