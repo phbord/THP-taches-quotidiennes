@@ -41,12 +41,22 @@ end
 
 # CREATION de fichiers
 def create_file_app(name)
-    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\n\nDotenv.load('.env')\n\n#binding.pry\n\n"
+    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\nrequire 'bundler'\nBundler.require\n\n"
+    content += "require_relative 'lib/page_1'\n\nDotenv.load('.env')\n\n#binding.pry\n\n"
     File.new "#{name}/app.rb","w"
     file = File.open("#{name}/app.rb", "w+")
     file.puts(content)
     file.close
     puts "file 'app.rb' created!"
+end
+
+def create_file_page_1(name)
+    content = "class Page1\nend"
+    File.new "#{name}/lib/page_1.rb","w"
+    file = File.open("#{name}/lib/page_1.rb", "w+")
+    file.puts(content)
+    file.close
+    puts "file 'page_1.rb' created!"
 end
 
 def create_file_app_spec(name)
@@ -55,6 +65,14 @@ def create_file_app_spec(name)
     file.puts("require_relative '../app.rb'\n\n")
     file.close
     puts "file 'app_spec.rb' created!"
+end
+
+def create_file_page_1_spec(name)
+    File.new "#{name}/spec/page_1_spec.rb","w"
+    file = File.open("#{name}/spec/page_1_spec.rb", "w+")
+    file.puts("require_relative '../lib/page_1.rb'\n\n")
+    file.close
+    puts "file 'page_1_spec.rb' created!"
 end
 
 def create_file_rubocop(name)
@@ -143,6 +161,7 @@ def perform
     check_if_main_folder_exist(name)
     create_folders(name)
     create_file_app(name)
+    create_file_page_1(name)
     create_file_rubocop(name)
     create_file_gemfile(name)
     add_other_gem(name)
@@ -152,6 +171,7 @@ def perform
     generate_rspec_init(name)
     generate_gemfile_lock(name)
     create_file_app_spec(name)
+    create_file_page_1_spec(name)
     generate_git_init(name)
 end
 
