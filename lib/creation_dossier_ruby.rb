@@ -38,7 +38,8 @@ def create_folders(name)
     Dir.mkdir("#{name}/lib")
     Dir.mkdir("#{name}/lib/app")
     Dir.mkdir("#{name}/lib/views")
-    puts "folders '#{name}', 'lib', 'app' and 'views' created!"
+    Dir.mkdir("#{name}/db")
+    puts "folders '#{name}', 'lib', 'app', 'views' and 'db' created!"
 end
 
 # CREATION de fichiers
