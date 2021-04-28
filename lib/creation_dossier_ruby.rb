@@ -36,13 +36,17 @@ end
 def create_folders(name)
     Dir.mkdir("#{name}")
     Dir.mkdir("#{name}/lib")
-    puts "folders '#{name}' and 'lib' created!"
+    Dir.mkdir("#{name}/lib/app")
+    Dir.mkdir("#{name}/lib/views")
+    puts "folders '#{name}', 'lib', 'app' and 'views' created!"
 end
 
 # CREATION de fichiers
 def create_file_app(name)
-    content = "require 'dotenv'\nrequire 'pry'\nrequire 'rspec'\nrequire 'rubocop'\nrequire 'bundler'\nBundler.require\n\n"
-    content += "require_relative 'lib/page_1'\n\nDotenv.load('.env')\n\n#binding.pry\n\n"
+    content = "require 'bundler'\nBundler.require\n"
+    content += "#require 'dotenv'\nDotenv.load('.env')\n"
+    content += "$:.unshift File.expand_path('./../lib', __FILE__)\n"
+    content += "require 'views/index'\n#binding.pry\n\n"
     File.new "#{name}/app.rb","w"
     file = File.open("#{name}/app.rb", "w+")
     file.puts(content)
@@ -50,13 +54,13 @@ def create_file_app(name)
     puts "file 'app.rb' created!"
 end
 
-def create_file_page_1(name)
+def create_file_index(name)
     content = "class Page1\nend"
-    File.new "#{name}/lib/page_1.rb","w"
-    file = File.open("#{name}/lib/page_1.rb", "w+")
+    File.new "#{name}/lib/views/index.rb","w"
+    file = File.open("#{name}/lib/views/index.rb", "w+")
     file.puts(content)
     file.close
-    puts "file 'page_1.rb' created!"
+    puts "file 'index.rb' created!"
 end
 
 def create_file_app_spec(name)
@@ -67,12 +71,12 @@ def create_file_app_spec(name)
     puts "file 'app_spec.rb' created!"
 end
 
-def create_file_page_1_spec(name)
-    File.new "#{name}/spec/page_1_spec.rb","w"
-    file = File.open("#{name}/spec/page_1_spec.rb", "w+")
-    file.puts("require_relative '../lib/page_1.rb'\n\n")
+def create_file_index_spec(name)
+    File.new "#{name}/spec/index_spec.rb","w"
+    file = File.open("#{name}/spec/index_spec.rb", "w+")
+    file.puts("require_relative '../lib/views/index.rb'\n\n")
     file.close
-    puts "file 'page_1_spec.rb' created!"
+    puts "file 'index_spec.rb' created!"
 end
 
 def create_file_rubocop(name)
@@ -161,7 +165,7 @@ def perform
     check_if_main_folder_exist(name)
     create_folders(name)
     create_file_app(name)
-    create_file_page_1(name)
+    create_file_index(name)
     create_file_rubocop(name)
     create_file_gemfile(name)
     add_other_gem(name)
@@ -171,7 +175,7 @@ def perform
     generate_rspec_init(name)
     generate_gemfile_lock(name)
     create_file_app_spec(name)
-    create_file_page_1_spec(name)
+    create_file_index_spec(name)
     generate_git_init(name)
 end
 
