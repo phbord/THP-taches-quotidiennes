@@ -43,8 +43,8 @@ end
 
 # CREATION de fichiers
 def create_file_app(name)
-    content = "require 'bundler'\nBundler.require\n"
-    content += "#require 'dotenv'\nDotenv.load('.env')\n"
+    content = "require 'bundler'\nBundler.require\n\n"
+    content += "#require 'dotenv'\nDotenv.load('.env')\n\n"
     content += "$:.unshift File.expand_path('./../lib', __FILE__)\n"
     content += "require 'views/index'\n#binding.pry\n\n"
     File.new "#{name}/app.rb","w"
