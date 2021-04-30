@@ -93,7 +93,7 @@ end
 def create_file_gemfile(name)
     ruby_v = RUBY_VERSION
     content = "source \"https://rubygems.org\"\nruby '#{RUBY_VERSION}'\n"
-    content += "gem 'dotenv'\ngem 'pry'\ngem 'rspec'\ngem 'rubocop'\n"
+    content += "gem 'dotenv'\ngem 'pry'\ngem 'rspec'\ngem 'rubocop'\ngem 'colorize'\n"
     File.new "#{name}/Gemfile","w"
     file = File.open("#{name}/Gemfile", "w+")
     file.puts(content)
